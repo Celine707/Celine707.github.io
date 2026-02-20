@@ -121,12 +121,20 @@ section{
   height:auto;
   display:block;
   margin:50px auto;
-  border-radius:8px
-  transition: transform 0.4s ease;
-  cursor: pointer;
+
+  background:#fff;
+  padding:12px;
+
+  box-shadow: 0 12px 28px rgba(0,0,0,0.10);
+
+  border-radius:10px;
+
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
-.work-item img:hover {
-   transform: scale(1.05);
+
+.work-item img:hover{
+  transform: translateY(-6px) scale(1.01);
+  box-shadow: 0 18px 40px rgba(0,0,0,0.16);
 }
   
 </style>
