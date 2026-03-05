@@ -546,42 +546,34 @@ section{
   <img id="lightboxImg" src="" alt="">
 </div>
 <script>
-  (function () {
-    const lightbox = document.getElementById('lightbox');
-    const lightboxImg = document.getElementById('lightboxImg');
+(function () {
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightboxImg');
+  if (!lightbox || !lightboxImg) return;
 
-    // 只让作品区的图片可以点（避免点到头像、logo等）
-    const works = document.getElementById('works');
-    if (!works) return;
+  // ✅ 全站绑定：只要是 section 里的 img（排除头部头像等）
+  const imgs = document.querySelectorAll('section img');
 
-    const imgs = works.querySelectorAll('.work-item img');
-    imgs.forEach(img => {
-      img.style.cursor = 'zoom-in';
-      img.addEventListener('click', () => {
-        lightboxImg.src = img.src;
-        lightbox.classList.add('open');
-        document.body.style.overflow = 'hidden';
-      });
+  imgs.forEach(img => {
+    img.style.cursor = 'zoom-in';
+    img.addEventListener('click', () => {
+      lightboxImg.src = img.getAttribute('src');
+      lightbox.classList.add('open');
+      document.body.style.overflow = 'hidden';
     });
+  });
 
-    // 点击黑色背景关闭
-    lightbox.addEventListener('click', (e) => {
-      if (e.target === lightbox || e.target === lightboxImg) {
-        lightbox.classList.remove('open');
-        lightboxImg.src = '';
-        document.body.style.overflow = '';
-      }
-    });
+  function closeBox(){
+    lightbox.classList.remove('open');
+    lightboxImg.src = '';
+    document.body.style.overflow = '';
+  }
 
-    // ESC 关闭
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && lightbox.classList.contains('open')) {
-        lightbox.classList.remove('open');
-        lightboxImg.src = '';
-        document.body.style.overflow = '';
-      }
-    });
-  })();
+  lightbox.addEventListener('click', closeBox);
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeBox();
+  });
+})();
 </script>
       
 </body>
