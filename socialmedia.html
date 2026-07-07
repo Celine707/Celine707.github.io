@@ -386,10 +386,9 @@ Fashion Illustration Preparation for Hongxia Fashion Design Exhibition
     document.body.style.overflow = '';
   });
 })();
-</script>
-  <div id="lightbox" style="display:none; position:fixed; z-index:9999; left:0; top:0; width:100%; height:100%; background:rgba(0,0,0,0.9); text-align:center;">
+</script><div id="lightbox" onclick="closeLightbox()" style="display:none; position:fixed; z-index:9999; left:0; top:0; width:100%; height:100%; background:rgba(0,0,0,0.9); text-align:center;">
   <span onclick="closeLightbox()" style="position:absolute; top:20px; right:35px; color:white; font-size:40px; cursor:pointer;">&times;</span>
-  <img id="lightbox-img" style="max-width:90%; max-height:90%; margin-top:40px;">
+ <img id="lightbox-img" onclick="event.stopPropagation()" style="max-width:90%; max-height:90%; margin-top:40px;">
 </div>
 
 <script>
